@@ -1,0 +1,145 @@
+<resources>
+    <string name="app_name">My Wedding SlamBook</string>
+    <string name="kodeGo">KodeGo</string>
+    <string name="slam_book">Slam Book</string>
+    <string name="formText">(Form)</string>
+
+    <string-array name="monthName">
+        <item name="0">Month</item>
+        <item name="1">January</item>
+        <item name="2">February</item>
+        <item name="3">March</item>
+        <item name="4">April</item>
+        <item name="5">May</item>
+        <item name="6">June</item>
+        <item name="7">July</item>
+        <item name="8">August</item>
+        <item name="9">September</item>
+        <item name="10">October</item>
+        <item name="11">November</item>
+        <item name="12">December</item>
+    </string-array>
+
+    <string-array name="monthDay">
+        <item name="0">Day</item>
+        <item name="1">1</item>
+        <item name="2">2</item>
+        <item name="3">3</item>
+        <item name="4">4</item>
+        <item name="5">5</item>
+        <item name="6">6</item>
+        <item name="7">7</item>
+        <item name="8">8</item>
+        <item name="9">9</item>
+        <item name="10">10</item>
+        <item name="11">11</item>
+        <item name="12">12</item>
+        <item name="1">13</item>
+        <item name="2">14</item>
+        <item name="3">15</item>
+        <item name="4">16</item>
+        <item name="5">17</item>
+        <item name="6">18</item>
+        <item name="7">19</item>
+        <item name="8">20</item>
+        <item name="9">21</item>
+        <item name="10">22</item>
+        <item name="11">23</item>
+        <item name="12">24</item>
+        <item name="12">25</item>
+        <item name="12">26</item>
+        <item name="12">27</item>
+        <item name="12">28</item>
+        <item name="12">29</item>
+        <item name="12">30</item>
+        <item name="12">31</item>
+    </string-array>
+
+    <string-array name="gender">
+        <item name="0">Gender</item>
+        <item name="1">Male</item>
+        <item name="2">Female</item>
+        <item name="3">Transgender</item>
+    </string-array>
+
+    <string-array name="status">
+        <item name="0">Status</item>
+        <item name="1">Single</item>
+        <item name="2">Married</item>
+        <item name="3">Widow</item>
+    </string-array>
+
+    <string-array name="colorThemeRate">
+        <item name="0">Rate</item>
+        <item name="1">1</item>
+        <item name="2">2</item>
+        <item name="3">3</item>
+        <item name="4">4</item>
+        <item name="5">5</item>
+    </string-array>
+
+    <string-array name="relationToCouple">
+        <item>Family</item>
+        <item>Friend</item>
+        <item>Colleague</item>
+        <item>Neighbor</item>
+        <item>Classmate</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="guestType">
+        <item>Brides Side</item>
+        <item>Groom Side</item>
+        <item>Both</item>
+    </string-array>
+
+    <string-array name="year">
+        <item name="0">Year</item>
+        <item name="1">1990</item>
+        <item name="2">1991</item>
+        <item name="3">1992</item>
+        <item name="4">1993</item>
+        <item name="5">1994</item>
+        <item name="6">1995</item>
+        <item name="7">1996</item>
+        <item name="8">1997</item>
+        <item name="9">1998</item>
+        <item name="10">1999</item>
+        <item name="11">2000</item>
+        <item name="12">2001</item>
+        <item name="13">2002</item>
+        <item name="14">2003</item>
+        <item name="15">2004</item>
+        <item name="16">2005</item>
+        <item name="17">2006</item>
+        <item name="18">2007</item>
+        <item name="19">2008</item>
+        <item name="20">2009</item>
+        <item name="21">2010</item>
+        <item name="22">2011</item>
+        <item name="23">2012</item>
+        <item name="24">2013</item>
+        <item name="25">2014</item>
+        <item name="26">2015</item>
+        <item name="27">2016</item>
+        <item name="28">2017</item>
+        <item name="29">2018</item>
+        <item name="30">2019</item>
+        <item name="31">2020</item>
+        <item name="32">2021</item>
+        <item name="33">2022</item>
+        <item name="34">2023</item>
+        <item name="35">2024</item>
+        <item name="36">2025</item>
+    </string-array>
+
+    <string-array name="countryCodes">
+        <item>Philippines</item>
+        <item>USA</item>
+        <item>Uk</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>
