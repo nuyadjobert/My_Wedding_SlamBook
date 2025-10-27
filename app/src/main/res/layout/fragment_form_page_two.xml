@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".FormPageTwoFragment">
 
     <ScrollView
@@ -15,263 +16,309 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:padding="16dp"
             android:orientation="vertical">
 
-            <!-- Reception Party Section -->
-            <LinearLayout
-                android:id="@+id/linear1"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:orientation="horizontal"
-                android:weightSum="12">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="9"
-                    app:endIconMode="clear_text">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/receptionParty"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:hint="Reception Party Song/Idea"
-                        android:inputType="text" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnAddReceptionParty"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:background="@drawable/common_button"
-                    android:text="Add"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linear2"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:text="Memories &amp; Ideas"
+                android:textColor="@color/pink_500"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:paddingBottom="16dp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Reception Party Ideas"
-                    android:textColor="#000"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/receptionPartyList"
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:choiceMode="singleChoice"
-                    android:listSelector="@color/pink_200"
-                    android:nestedScrollingEnabled="true"
-                    android:scrollbars="vertical"
-                    android:textSize="12sp"
-                    tools:ignore="NestedScrolling" />
-
-            </LinearLayout>
-
-            <!-- Favorite Memory Section -->
-            <LinearLayout
-                android:id="@+id/linear3"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:orientation="horizontal"
-                android:weightSum="12">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="9"
-                    app:endIconMode="clear_text">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/favoriteMemory"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:hint="Favorite Memory of the Couple"
-                        android:inputType="text" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnAddFavoriteMemory"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:background="@drawable/common_button"
-                    android:text="Add"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linear4"
+            <androidx.cardview.widget.CardView
+                style="@style/Widget.MaterialComponents.CardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
-                <TextView
-                    android:id="@+id/titleFavoriteMemory"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Favorite Memories"
-                    android:textColor="#000"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/favoriteMemoryList"
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:choiceMode="singleChoice"
-                    android:listSelector="@color/pink_200"
-                    android:nestedScrollingEnabled="true"
-                    android:scrollbars="vertical"
-                    android:textSize="12sp"
-                    tools:ignore="NestedScrolling" />
-            </LinearLayout>
-
-            <!-- Best Marriage Advice Section -->
-            <LinearLayout
-                android:id="@+id/linear5"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:orientation="horizontal"
-                android:weightSum="12">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="9"
-                    app:endIconMode="clear_text">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/marriageAdvice"
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:hint="Best Marriage Advice"
-                        android:inputType="text" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:text="Reception Party Ideas"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:paddingBottom="8dp" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnAddMarriageAdvice"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:background="@drawable/common_button"
-                    android:text="Add"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linear6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Marriage Advice"
-                    android:textColor="#000"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/marriageAdviceList"
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:choiceMode="singleChoice"
-                    android:listSelector="@color/pink_200"
-                    android:nestedScrollingEnabled="true"
-                    android:scrollbars="vertical"
-                    android:textSize="12sp"
-                    tools:ignore="NestedScrolling" />
-
-            </LinearLayout>
-
-            <!-- Color Theme Idea Section -->
-            <LinearLayout
-                android:id="@+id/linear7"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:orientation="horizontal"
-                android:weightSum="12">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="6"
-                    app:endIconMode="clear_text">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/colorTheme"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:hint="Color Theme Idea"
-                        android:inputType="text" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:orientation="horizontal"
+                        android:weightSum="12"
+                        android:layout_marginBottom="8dp">
 
-                <Spinner
-                    android:id="@+id/colorThemeRate"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:spinnerMode="dialog"
-                    android:layout_weight="3"
-                    android:entries="@array/colorThemeRate" />
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="9"
+                            android:layout_marginEnd="8dp"
+                            app:boxBackgroundColor="@android:color/transparent"
+                            app:endIconMode="clear_text"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnAddColorTheme"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:background="@drawable/common_button"
-                    android:text="Add"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
-            </LinearLayout>
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/receptionParty"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Song/Idea"
+                                android:inputType="text" />
+                        </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
-                android:id="@+id/linear8"
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnAddReceptionParty"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            android:background="@drawable/common_button"
+                            android:text="Add"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/receptionPartyList"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:nestedScrollingEnabled="true"
+                        android:scrollbars="vertical"
+                        android:background="@color/pink_50"
+                        tools:ignore="NestedScrolling"
+                        android:padding="4dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                style="@style/Widget.MaterialComponents.CardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Color Theme Ideas"
-                    android:textColor="#000"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/colorThemeList"
+                    <TextView
+                        android:id="@+id/titleFavoriteMemory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Favorite Memories"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:paddingBottom="8dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="12"
+                        android:layout_marginBottom="8dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="9"
+                            android:layout_marginEnd="8dp"
+                            app:boxBackgroundColor="@android:color/transparent"
+                            app:endIconMode="clear_text"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/favoriteMemory"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Memory of the Couple"
+                                android:inputType="text" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnAddFavoriteMemory"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            android:background="@drawable/common_button"
+                            android:text="Add"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/favoriteMemoryList"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:nestedScrollingEnabled="true"
+                        android:scrollbars="vertical"
+                        android:background="@color/pink_50"
+                        tools:ignore="NestedScrolling"
+                        android:padding="4dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                style="@style/Widget.MaterialComponents.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:choiceMode="singleChoice"
-                    android:listSelector="@color/pink_200"
-                    android:nestedScrollingEnabled="true"
-                    android:scrollbars="vertical"
-                    android:textSize="12sp"
-                    tools:ignore="NestedScrolling" />
-            </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Marriage Advice"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:paddingBottom="8dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="12"
+                        android:layout_marginBottom="8dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="9"
+                            android:layout_marginEnd="8dp"
+                            app:boxBackgroundColor="@android:color/transparent"
+                            app:endIconMode="clear_text"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/marriageAdvice"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Best Marriage Advice"
+                                android:inputType="text" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnAddMarriageAdvice"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            android:background="@drawable/common_button"
+                            android:text="Add"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/marriageAdviceList"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:nestedScrollingEnabled="true"
+                        android:scrollbars="vertical"
+                        android:background="@color/pink_50"
+                        tools:ignore="NestedScrolling"
+                        android:padding="4dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                style="@style/Widget.MaterialComponents.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Color Theme Ideas &amp; Rating"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:paddingBottom="8dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="12"
+                        android:layout_marginBottom="8dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:layout_marginEnd="8dp"
+                            app:boxBackgroundColor="@android:color/transparent"
+                            app:endIconMode="clear_text"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/colorTheme"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Color Theme Idea"
+                                android:inputType="text" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <Spinner
+                            android:id="@+id/colorThemeRate"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:spinnerMode="dialog"
+                            android:layout_weight="4"
+                            android:layout_marginEnd="8dp"
+                            android:entries="@array/colorThemeRate"
+                            android:background="@drawable/spinner_border" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnAddColorTheme"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            android:background="@drawable/common_button"
+                            android:text="Add"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/colorThemeList"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:nestedScrollingEnabled="true"
+                        android:scrollbars="vertical"
+                        android:background="@color/pink_50"
+                        tools:ignore="NestedScrolling"
+                        android:padding="4dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
     </ScrollView>

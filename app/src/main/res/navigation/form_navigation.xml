@@ -37,4 +37,42 @@
             android:id="@+id/action_formPageThreeFragment_to_formPageTwoFragment"
             app:destination="@id/formPageTwoFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/viewMemoriesFragment"
+        android:name="com.kodego.diangca.ebrahim.myslambook.ViewMemoriesFragment"
+        android:label="fragment_view_memories"
+        tools:layout="@layout/fragment_view_memories" >
+        <action
+            android:id="@+id/action_viewMemoriesFragment_to_contactDetailsFragment"
+            app:destination="@id/contactDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/contactDetailsFragment"
+        android:name="com.kodego.diangca.ebrahim.myslambook.ContactDetailsFragment"
+        android:label="fragment_contact_details"
+        tools:layout="@layout/fragment_contact_details" >
+        <argument
+            android:name="slamBooK"
+            app:argType="com.kodego.diangca.ebrahim.myslambook.model.SlamBook" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_FormPageThreeFragment_to_viewMemoriesFragment"
+        app:destination="@id/viewMemoriesFragment" />
+
+    <fragment
+        android:id="@+id/guestListFragment"
+        android:name="com.kodego.diangca.ebrahim.myslambook.GuestListFragment"
+        android:label="fragment_guest_list"
+        tools:layout="@layout/fragment_guest_list" >
+        <action
+            android:id="@+id/action_guestListFragment_to_viewMemoriesFragment"
+            app:destination="@id/viewMemoriesFragment" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_mainMenuFragment_to_guestListFragment"
+        app:destination="@id/guestListFragment" />
+
 </navigation>

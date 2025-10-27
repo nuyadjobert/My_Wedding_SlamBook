@@ -4,36 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".FormPageThreeFragment">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/actionLayout"
-        tools:context=".Form2Activity">
+        app:layout_constraintBottom_toTopOf="@id/actionLayout">
 
         <LinearLayout
             android:id="@+id/linear1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:padding="16dp"
             android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Final Thoughts &amp; Memories"
+                android:textColor="@color/pink_200"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:paddingBottom="16dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:endIconMode="clear_text">
+                android:layout_marginBottom="12dp"
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/whatLoveMeansToThem"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
                     android:gravity="start"
                     android:hint="What I admire about their love"
                     android:inputType="textMultiLine"
-                    android:lines="3"
                     android:maxLines="3"
                     android:minLines="3" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -41,13 +51,14 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:endIconMode="clear_text">
+                android:layout_marginBottom="12dp"
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/wishesForTheirMarriage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
                     android:gravity="start"
                     android:hint="My wishes for their marriage"
                     android:inputType="textMultiLine"
@@ -58,13 +69,14 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:endIconMode="clear_text">
+                android:layout_marginBottom="12dp"
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/favoriteMemory"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
                     android:gravity="start"
                     android:hint="My favorite memory with the couple"
                     android:inputType="textMultiLine"
@@ -75,13 +87,14 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:endIconMode="clear_text">
+                android:layout_marginBottom="12dp"
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/favoriteThingAboutCouple"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
                     android:gravity="start"
                     android:hint="My favorite thing about the couple"
                     android:inputType="textMultiLine"
@@ -92,13 +105,14 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:endIconMode="clear_text">
+                android:layout_marginBottom="12dp"
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/marriageAdvice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
                     android:gravity="start"
                     android:hint="My advice for the newlyweds"
                     android:inputType="textMultiLine"
@@ -109,13 +123,14 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:endIconMode="clear_text">
+                android:layout_marginBottom="16dp"
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/howIKnowTheCouple"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
                     android:gravity="start"
                     android:hint="How I know the couple"
                     android:inputType="textMultiLine"
@@ -123,21 +138,25 @@
                     android:minLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
             <LinearLayout
                 android:id="@+id/linear2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="12">
+                android:weightSum="12"
+                android:layout_marginBottom="24dp"
+                android:padding="8dp"
+                android:background="@drawable/rounded_background_50"
+                android:gravity="center_vertical">
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="5"
-                    android:gravity="center_vertical"
                     android:text="Rate the Couple"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textColor="@color/text_dark"
+                    android:textStyle="bold" />
 
                 <RatingBar
                     android:id="@+id/ratingBar"
@@ -147,19 +166,30 @@
                     android:max="5"
                     android:numStars="5"
                     android:rating="5"
-                    android:stepSize="1" />
-            </LinearLayout>
+                    android:stepSize="1"
+                    android:progressTint="@color/pink_500" /> </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Include a Photo (Optional)"
+                android:textColor="@color/pink_200"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingBottom="12dp"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
+                android:padding="8dp"
+                android:background="@drawable/rounded_background_50">
 
                 <ImageView
                     android:id="@+id/profileImageView"
-                    android:layout_width="150dp"
+                    android:layout_width="120dp"
                     android:layout_height="120dp"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/image_placeholder_border"
                     android:src="@drawable/profile_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -169,6 +199,8 @@
                     android:id="@+id/btnCamera"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="8dp"
                     app:layout_constraintStart_toEndOf="@id/profileImageView"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -181,12 +213,13 @@
                     android:id="@+id/btnBrowse"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     app:layout_constraintStart_toEndOf="@id/profileImageView"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/btnCamera"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:background="@drawable/common_button"
-                    android:text="Browse"
+                    android:text="Browse Gallery"
                     android:textColor="@color/white" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -194,7 +227,6 @@
         </LinearLayout>
 
     </ScrollView>
-
 
     <LinearLayout
         android:id="@+id/actionLayout"

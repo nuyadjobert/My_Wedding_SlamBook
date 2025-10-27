@@ -16,7 +16,7 @@ import com.kodego.diangca.ebrahim.myslambook.databinding.FragmentFormPageTwoBind
 import com.kodego.diangca.ebrahim.myslambook.model.SlamBook
 
 
-class FormPageThreeFragment(slamBook: SlamBook) : Fragment() {
+class FormPageThreeFragment() : Fragment() {
     private lateinit var slamBook: SlamBook
 
     private lateinit var binding: FragmentFormPageThreeBinding
@@ -58,8 +58,39 @@ class FormPageThreeFragment(slamBook: SlamBook) : Fragment() {
     }
 
     private fun btnSaveOnClickListener() {
-        Toast.makeText(binding.root.context, "Saving..", Toast.LENGTH_LONG).show()
+        // --- 1. COLLECT DATA (Ensure this section is complete before navigation) ---
+        // You should have already ensured all page 3 fields are saved to 'slamBook' here.
+
+        // Example (RE-INCLUDE YOUR DATA COLLECTION HERE, IF NOT ALREADY DONE):
+        /*
+        with(binding) {
+            slamBook.whatLoveMeansToThem = whatLoveMeansToThem.text.toString()
+            // ... collect all other fields ...
+            slamBook.rating = ratingBar.rating.toInt()
+        }
+        */
+
+        // 2. Show feedback
+        Toast.makeText(requireContext(), "Submitting entry...", Toast.LENGTH_SHORT).show()
+
+        // 3. Prepare the Bundle
+        val bundle = Bundle().apply {
+            // Pass the fully updated SlamBook object
+            putParcelable("slamBooK", slamBook)
+        }
+
+        // 4. Navigate to ViewMemoriesFragment and display the details
+        // Note: We use the existing action defined in nav_graph.xml
+        findNavController().navigate(
+            R.id.action_FormPageThreeFragment_to_viewMemoriesFragment,
+            bundle
+        )
+
+        // DO NOT use requireActivity().finish() here, as you want the host activity to remain.
+        // The user can now use the back button to return to the menu/main screen if needed.
     }
+
+
 
     private fun btnBackOnClickListener() {
         var bundle = Bundle()

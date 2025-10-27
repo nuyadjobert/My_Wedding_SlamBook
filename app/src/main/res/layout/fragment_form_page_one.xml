@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".FormPageOneFragment">
 
     <ScrollView
@@ -16,7 +17,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Guest Contact &amp; Identity"
+                android:textColor="@color/pink_200"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:paddingBottom="16dp" />
 
             <LinearLayout
                 android:id="@+id/linear1"
@@ -27,77 +38,80 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:endIconMode="clear_text">
+                    android:layout_marginBottom="8dp"
+                    app:endIconMode="clear_text"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/nickName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
                         android:hint="Nickname"
                         android:inputType="text" />
-
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:endIconMode="clear_text">
+                    android:layout_marginBottom="8dp"
+                    app:endIconMode="clear_text"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/friendCall"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
                         android:hint="Name to appear in guest book"
                         android:inputType="text" />
-
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:endIconMode="clear_text">
+                    android:layout_marginBottom="8dp"
+                    app:endIconMode="clear_text"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/likeToCall"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
                         android:hint="Message for a couple"
                         android:inputType="text" />
-
                 </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="FullName"
-                    android:textAlignment="center"
-                    android:textColor="@color/pink_200"
-                    android:textSize="16sp"
-                    android:textStyle="italic" />
-
             </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Full Legal Name"
+                android:textAlignment="center"
+                android:textColor="@color/pink_200"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"/>
 
             <LinearLayout
                 android:id="@+id/linear2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:weightSum="2"
+                android:layout_marginBottom="16dp">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:endIconMode="clear_text">
+                    android:layout_marginEnd="8dp"
+                    app:endIconMode="clear_text"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/lastName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
                         android:hint="Lastname"
                         android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -106,111 +120,76 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:endIconMode="clear_text">
+                    app:endIconMode="clear_text"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/firstName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
                         android:hint="Firstname"
                         android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/linear3"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="16dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="BirthDate"
-                    android:textAlignment="center"
-                    android:textColor="@color/pink_200"
-                    android:textSize="16sp"
-                    android:textStyle="italic" />
-
-                <com.google.android.material.divider.MaterialDivider
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="8dp"
-                    app:dividerColor="@color/secondary" />
-            </LinearLayout>
+                android:text="Birthdate"
+                android:textAlignment="center"
+                android:textColor="@color/pink_200"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingBottom="8dp"/>
 
             <LinearLayout
                 android:id="@+id/linear4"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="12"
-                android:padding="4dp">
+                android:layout_marginBottom="16dp">
 
                 <Spinner
                     android:id="@+id/dateMonth"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="50dp"
                     android:layout_weight="5"
-                    android:background="@android:color/transparent"
+                    android:layout_marginEnd="8dp"
                     android:entries="@array/monthName"
+                    android:background="@drawable/spinner_border"
                     android:spinnerMode="dialog" />
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/secondary" />
 
                 <Spinner
                     android:id="@+id/dateDay"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="50dp"
                     android:layout_weight="4"
-                    android:background="@android:color/transparent"
+                    android:layout_marginEnd="8dp"
                     android:entries="@array/monthDay"
+                    android:background="@drawable/spinner_border"
                     android:spinnerMode="dialog" />
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/secondary" />
 
                 <Spinner
                     android:id="@+id/dateYear"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="50dp"
                     android:layout_weight="3"
                     android:entries="@array/year"
-                    android:background="@android:color/transparent"
+                    android:background="@drawable/spinner_border"
                     android:spinnerMode="dialog" />
             </LinearLayout>
 
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="16dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Guest Information"
-                    android:textAlignment="center"
-                    android:textColor="@color/pink_200"
-                    android:textSize="16sp"
-                    android:textStyle="italic" />
-
-                <com.google.android.material.divider.MaterialDivider
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="8dp"
-                    app:dividerColor="@color/secondary" />
-            </LinearLayout>
+                android:text="Guest Information &amp; Contact"
+                android:textAlignment="center"
+                android:textColor="@color/pink_200"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingBottom="8dp"/>
 
             <LinearLayout
                 android:id="@+id/linear5"
@@ -223,64 +202,64 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Guest Type"
-                    android:textColor="@color/black"
+                    android:textColor="@color/text_dark"
                     android:textSize="14sp"
-                    android:layout_marginBottom="4dp" />
+                    android:paddingTop="8dp" />
 
                 <Spinner
                     android:id="@+id/guestType"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:entries="@array/guestType"
-                    android:visibility="visible"
-                    android:spinnerMode="dialog" />
+                    android:background="@drawable/spinner_border"
+                    android:spinnerMode="dialog"
+                    android:layout_marginBottom="12dp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Relationship to Couple"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="4dp" />
+                    android:textColor="@color/text_dark"
+                    android:textSize="14sp" />
 
                 <Spinner
                     android:id="@+id/Relationship"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:entries="@array/relationToCouple"
-                    android:visibility="visible"
-                    android:spinnerMode="dialog" />
+                    android:background="@drawable/spinner_border"
+                    android:spinnerMode="dialog"
+                    android:layout_marginBottom="12dp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     app:endIconMode="clear_text"
-                    android:layout_marginTop="16dp">
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/emailAdd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:hint="Email"
+                        android:hint="Email Address"
                         android:inputType="textEmailAddress" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Contact Number with Country Code -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="10"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginBottom="8dp">
 
                     <Spinner
                         android:id="@+id/countryCodeSpinner"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_weight="3"
                         android:entries="@array/countryCodes"
+                        android:background="@drawable/spinner_border"
                         android:spinnerMode="dropdown" />
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -288,13 +267,13 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="7"
                         android:layout_marginStart="8dp"
-                        app:endIconMode="clear_text">
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/contactNo"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@android:color/transparent"
+                            android:hint="Contact Number"
                             android:inputType="phone" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
@@ -303,18 +282,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:endIconMode="clear_text"
-                    android:layout_marginTop="8dp">
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
                         android:gravity="start"
-                        android:hint="Address"
+                        android:hint="Full Address"
                         android:inputType="textMultiLine"
-                        android:maxLines="2"
-                        android:minLines="2" />
+                        android:maxLines="3"
+                        android:minLines="3" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>

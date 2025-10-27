@@ -13,6 +13,7 @@ class MenuActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMenuBinding
     private var slamBook = SlamBook()
+    // ⭐ IMPORTANT: This list must be populated with saved entries (e.g., from a database)
     private var slamBooks:ArrayList<SlamBook> = ArrayList()
 
 
@@ -38,13 +39,32 @@ class MenuActivity : AppCompatActivity() {
         binding.btnCreate.setOnClickListener {
             btnCreateOnClickListener()
         }
+
+        // ⭐ NEW CODE: Make the VIEW MEMORIES button clickable ⭐
+        binding.btnView.setOnClickListener {
+            btnViewOnClickListener()
+        }
+
+        // ⭐ Placeholder: Populate slamBooks here before it's used ⭐
+        // Example: loadSampleData()
     }
 
     private fun btnCreateOnClickListener() {
         var nextForm = Intent(this, FormActivity::class.java)
-        nextForm.putExtra("slamBooK", slamBook)
+        nextForm.putExtra("slamBooK", slamBook) // Pass one empty book for creation
         startActivity(nextForm)
         finish()
+    }
 
+    // ⭐ NEW FUNCTION: Handles the VIEW MEMORIES button click ⭐
+    private fun btnViewOnClickListener() {
+        var viewMemoriesIntent = Intent(this, FormActivity::class.java)
+
+        // Pass the entire list of saved SlamBooks to FormActivity
+        // Key: "slamBooksList"
+        viewMemoriesIntent.putParcelableArrayListExtra("slamBooksList", slamBooks)
+
+        startActivity(viewMemoriesIntent)
+        // Do NOT call finish() here, as the user should be able to press Back
     }
 }
