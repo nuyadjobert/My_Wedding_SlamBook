@@ -14,13 +14,11 @@ class ViewMemoriesFragment : Fragment() {
 
     private lateinit var binding: FragmentViewMemoriesBinding
     private lateinit var slamBook: SlamBook
+    private var isExpanded: Boolean = false // State to track if content is visible
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // ⭐ UPDATED ONCREATE METHOD ⭐
-
-        // Check if arguments exist and try to retrieve the SlamBook object safely
         val loadedSlamBook = arguments?.let {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
                 it.getParcelable("slamBooK", SlamBook::class.java)
@@ -30,15 +28,12 @@ class ViewMemoriesFragment : Fragment() {
             }
         }
 
-        // Safely initialize slamBook if it was loaded, otherwise log an error
         if (loadedSlamBook != null) {
             slamBook = loadedSlamBook
             Log.d("VIEW_MEMORIES", "Loaded Guest: ${slamBook.firstName} ${slamBook.lastName}")
         } else {
-            // Handle the error state where data is missing (e.g., if Fragment was launched incorrectly)
             Log.e("VIEW_MEMORIES", "SlamBook argument is NULL. Cannot initialize data.")
-            // You might consider popping back if the data is essential:
-            // findNavController().popBackStack()
+            // Handle error state if necessary
         }
     }
 
@@ -53,31 +48,68 @@ class ViewMemoriesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        displayGuestDetails()
 
+        // 1. Display only the header details immediately
+        displayHeaderDetails()
+
+        binding.btnBackToMenu.setOnClickListener {
+            requireActivity().finish() // closes FormActivity and returns to MenuActivity
+        }
+
+        // 2. Set up the toggle button listener
+        binding.btnToggleDetails.setOnClickListener {
+            toggleContentVisibility()
+        }
+
+        // 3. Set up the contact button listener (if still needed)
         binding.btnViewContactDetails.setOnClickListener {
             val bundle= Bundle().apply {
                 putParcelable("slamBook",slamBook)
             }
             findNavController().navigate(
                 R.id.action_viewMemoriesFragment_to_contactDetailsFragment,
-                bundle // Pass the data bundle
+                bundle
             )
         }
     }
 
-    private fun displayGuestDetails() {
+    private fun displayHeaderDetails() {
+        // Only set the name and nickname here
         with(binding) {
             guestName.text = "${slamBook.firstName} ${slamBook.lastName}"
             guestNickname.text = slamBook.nickName
+        }
+    }
+
+    private fun displayAllContentDetails() {
+        // Set all the hidden content details
+        with(binding) {
             guestLoveMeans.text = slamBook.whatLoveMeansToThem
             guestWishes.text = slamBook.wishesForTheirMarriage
             guestFavoriteMemory.text = slamBook.favoriteMemory
             guestFavoriteThing.text = slamBook.favoriteThingAboutCouple
             guestMarriageAdvice.text = slamBook.marriageAdvice
-            guestRating.text = "Couple Rating: ${slamBook.coupleRating}/5"
+            // Use String interpolation for a cleaner display
+            guestRating.text = "${slamBook.coupleRating}/5 Stars"
         }
+    }
 
+    private fun toggleContentVisibility() {
+        isExpanded = !isExpanded // Toggle the state
+
+        if (isExpanded) {
+            // Show content
+            binding.contentContainer.visibility = View.VISIBLE
+            // Load all data when expanded
+            displayAllContentDetails()
+            // Rotate the arrow up (assuming 180 degrees is the 'up' state)
+            binding.btnToggleDetails.rotation = 180f
+        } else {
+            // Hide content
+            binding.contentContainer.visibility = View.GONE
+            // Rotate the arrow down (0 degrees is the 'down' state)
+            binding.btnToggleDetails.rotation = 0f
+        }
     }
 
 }

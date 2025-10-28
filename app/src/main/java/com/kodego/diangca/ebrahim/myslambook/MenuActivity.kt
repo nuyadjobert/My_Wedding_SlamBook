@@ -3,8 +3,6 @@ package com.kodego.diangca.ebrahim.myslambook
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
 import com.kodego.diangca.ebrahim.myslambook.databinding.ActivityMenuBinding
 import com.kodego.diangca.ebrahim.myslambook.model.SlamBook
@@ -12,59 +10,52 @@ import com.kodego.diangca.ebrahim.myslambook.model.SlamBook
 class MenuActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMenuBinding
-    private var slamBook = SlamBook()
-    // ⭐ IMPORTANT: This list must be populated with saved entries (e.g., from a database)
-    private var slamBooks:ArrayList<SlamBook> = ArrayList()
-
-
-    private val launchRegister = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        val data = result.data
-
-        Log.d("FROM REGISTER", data!!.getStringExtra("username").toString())
-        Snackbar.make(
-            binding.root,
-            "Hi  ${data!!.getStringExtra("firstname")}! \n Please wait for the confirmation of your Account",
-            Snackbar.LENGTH_LONG
-        ).show()
-    }
+    private var slamBook = SlamBook() // For creating a new form
+    private var slamBooks: ArrayList<SlamBook> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_menu)
         binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnCreate.setOnClickListener {
-            btnCreateOnClickListener()
+        // Check if a new SlamBook was passed from FormPageThreeFragment
+        val newSlamBook = intent.getParcelableExtra<SlamBook>("slamBooK")
+        if (newSlamBook != null) {
+            // Add or update the slamBooks list
+            slamBooks.clear()
+            slamBooks.add(newSlamBook)
+        } else if (slamBooks.isEmpty()) {
+            // Fallback sample data
+            slamBooks.add(SlamBook.createCompletedSample())
         }
 
-        // ⭐ NEW CODE: Make the VIEW MEMORIES button clickable ⭐
-        binding.btnView.setOnClickListener {
-            btnViewOnClickListener()
+        binding.btnCreate.setOnClickListener { openCreateMemories() }
+        binding.btnView.setOnClickListener { openViewMemories() }
+    }
+
+
+    // ✅ 1. When "Create Memories" is clicked → Open FormActivity → Start at Page 1
+    private fun openCreateMemories() {
+        val intent = Intent(this, FormActivity::class.java)
+        intent.putExtra("NAVIGATE_TO", "CREATE_MEMORIES")
+        intent.putExtra("slamBooK", SlamBook()) // empty new one
+        startActivity(intent)
+    }
+
+    // ✅ 2. When "View Memories" is clicked → Open FormActivity → Directly show ViewMemoriesFragment
+    private fun openViewMemories() {
+        if (slamBooks.isEmpty()) {
+            Snackbar.make(
+                binding.root,
+                "No memories saved yet! Try creating one first.",
+                Snackbar.LENGTH_SHORT
+            ).show()
+            return
         }
 
-        // ⭐ Placeholder: Populate slamBooks here before it's used ⭐
-        // Example: loadSampleData()
-    }
-
-    private fun btnCreateOnClickListener() {
-        var nextForm = Intent(this, FormActivity::class.java)
-        nextForm.putExtra("slamBooK", slamBook) // Pass one empty book for creation
-        startActivity(nextForm)
-        finish()
-    }
-
-    // ⭐ NEW FUNCTION: Handles the VIEW MEMORIES button click ⭐
-    private fun btnViewOnClickListener() {
-        var viewMemoriesIntent = Intent(this, FormActivity::class.java)
-
-        // Pass the entire list of saved SlamBooks to FormActivity
-        // Key: "slamBooksList"
-        viewMemoriesIntent.putParcelableArrayListExtra("slamBooksList", slamBooks)
-
-        startActivity(viewMemoriesIntent)
-        // Do NOT call finish() here, as the user should be able to press Back
+        val intent = Intent(this, FormActivity::class.java)
+        intent.putExtra("NAVIGATE_TO", "VIEW_MEMORIES")
+        intent.putExtra("slamBooK", slamBooks[0])
+        startActivity(intent)
     }
 }

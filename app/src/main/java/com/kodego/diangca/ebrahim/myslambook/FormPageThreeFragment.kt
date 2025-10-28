@@ -58,36 +58,25 @@ class FormPageThreeFragment() : Fragment() {
     }
 
     private fun btnSaveOnClickListener() {
-        // --- 1. COLLECT DATA (Ensure this section is complete before navigation) ---
-        // You should have already ensured all page 3 fields are saved to 'slamBook' here.
-
-        // Example (RE-INCLUDE YOUR DATA COLLECTION HERE, IF NOT ALREADY DONE):
-        /*
         with(binding) {
             slamBook.whatLoveMeansToThem = whatLoveMeansToThem.text.toString()
-            // ... collect all other fields ...
-            slamBook.rating = ratingBar.rating.toInt()
-        }
-        */
-
-        // 2. Show feedback
-        Toast.makeText(requireContext(), "Submitting entry...", Toast.LENGTH_SHORT).show()
-
-        // 3. Prepare the Bundle
-        val bundle = Bundle().apply {
-            // Pass the fully updated SlamBook object
-            putParcelable("slamBooK", slamBook)
+            slamBook.wishesForTheirMarriage = wishesForTheirMarriage.text.toString()
+            slamBook.favoriteMemory = favoriteMemory.text.toString()
+            slamBook.favoriteThingAboutCouple = favoriteThingAboutCouple.text.toString()
+            slamBook.marriageAdvice = marriageAdvice.text.toString()
+            slamBook.coupleRating = ratingBar.rating.toInt()
         }
 
-        // 4. Navigate to ViewMemoriesFragment and display the details
-        // Note: We use the existing action defined in nav_graph.xml
-        findNavController().navigate(
-            R.id.action_FormPageThreeFragment_to_viewMemoriesFragment,
-            bundle
-        )
+        Toast.makeText(requireContext(), "Submission Complete!", Toast.LENGTH_SHORT).show()
 
-        // DO NOT use requireActivity().finish() here, as you want the host activity to remain.
-        // The user can now use the back button to return to the menu/main screen if needed.
+        // ⭐ Create an intent to go back to MenuActivity
+        val intent = Intent(requireContext(), MenuActivity::class.java).apply {
+            putExtra("slamBooK", slamBook) // send the completed SlamBook
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+        }
+
+        startActivity(intent) // go back to menu
+        requireActivity().finish() // close the form activity
     }
 
 
@@ -96,6 +85,7 @@ class FormPageThreeFragment() : Fragment() {
         var bundle = Bundle()
         bundle.putParcelable("slamBooK", slamBook)
 
+        // Navigate back to FormPageTwoFragment within the NavHost
         findNavController().navigate(R.id.action_formPageThreeFragment_to_formPageTwoFragment, bundle)
     }
 

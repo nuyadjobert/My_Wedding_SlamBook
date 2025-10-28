@@ -6,16 +6,110 @@
     android:padding="16dp"
     tools:context=".ContactDetailsFragment">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        
+        <Button
+            android:id="@+id/btnBackToViewMemories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="←Back"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/pink_500"
+            android:layout_marginBottom="16dp"
+            android:paddingHorizontal="16dp"/>
+
+        <!-- HEADER -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guest Identity"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/pink_200"
+            android:gravity="center_horizontal"
+            android:paddingBottom="16dp" />
+
+        <!-- NICKNAME / FULL NAME -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nickname"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorAccent"
+            android:layout_marginBottom="4dp"
+            android:textAllCaps="true"/>
+
+        <TextView
+            android:id="@+id/guestNickname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:text="Nickname"
+            android:textSize="18sp"
+            android:background="@drawable/rounded_background"
+            android:layout_marginBottom="16dp"
+            tools:text="Ebra"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Relationship"
+            android:text="Full Legal Name"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorAccent"
+            android:layout_marginBottom="4dp"
+            android:textAllCaps="true"/>
+
+        <TextView
+            android:id="@+id/guestFullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:text="Firstname Lastname"
+            android:textSize="18sp"
+            android:background="@drawable/rounded_background"
+            android:layout_marginBottom="16dp"
+            tools:text="Ebrahim Diangca"/>
+
+        <!-- GUEST TYPE / RELATIONSHIP -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guest Type"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorAccent"
+            android:layout_marginBottom="4dp"
+            android:textAllCaps="true"/>
+
+        <TextView
+            android:id="@+id/guestTypeDisplay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:text="Guest Type"
+            android:textSize="18sp"
+            android:background="@drawable/rounded_background"
+            android:layout_marginBottom="16dp"
+            tools:text="Bride's Family"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Relationship to Couple"
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="?attr/colorAccent"
@@ -33,18 +127,47 @@
             android:text="Relationship to Couple"
             android:textSize="18sp"
             android:background="@drawable/rounded_background"
+            android:layout_marginBottom="16dp"
             tools:text="Maid of Honor / Best Friend"/>
 
+        <!-- BIRTHDATE (Displaying this as one field) -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Contact Information"
+            android:text="Birthdate"
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="?attr/colorAccent"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="4dp"
             android:textAllCaps="true"/>
+
+        <TextView
+            android:id="@+id/guestBirthdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:text="Birth Month Day, Year"
+            android:textSize="18sp"
+            android:background="@drawable/rounded_background"
+            android:layout_marginBottom="16dp"
+            tools:text="August 15, 1990"/>
+
+        <!-- CONTACT INFO -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Contact Information"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/pink_200"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp" />
+
 
         <LinearLayout
             android:layout_width="match_parent"

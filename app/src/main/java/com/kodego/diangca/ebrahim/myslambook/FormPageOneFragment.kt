@@ -114,46 +114,24 @@ class FormPageOneFragment : Fragment() {
                     Relationship.setSelection(position)
                 }
             }
+
+            // ⭐ NEW: RESTORE BIRTHDATE FIELDS (for when navigating back to this page) ⭐
+            if (slamBook.birthMonth.isNotBlank()) {
+                val months = resources.getStringArray(R.array.monthName)
+                dateMonth.setSelection(months.indexOf(slamBook.birthMonth))
+            }
+            if (slamBook.birthDay.isNotBlank()) {
+                val days = resources.getStringArray(R.array.monthDay)
+                dateDay.setSelection(days.indexOf(slamBook.birthDay))
+            }
+            if (slamBook.birthYear.isNotBlank()) {
+                val years = resources.getStringArray(R.array.year)
+                dateYear.setSelection(years.indexOf(slamBook.birthYear))
+            }
         }
     }
 
     private fun btnNextOnClickListener() {
-        if (binding.firstName.text.isNullOrEmpty() ||
-            binding.lastName.text.isNullOrEmpty() ||
-            binding.nickName.text.isNullOrEmpty() ||
-            binding.Relationship.selectedItemPosition == 0 ||
-            binding.emailAdd.text.isNullOrEmpty() ||
-            binding.contactNo.text.isNullOrEmpty() ||
-            binding.address.text.isNullOrEmpty()
-        ) {
-            // Show validation errors
-            if (binding.firstName.text.isNullOrEmpty()) {
-                binding.firstName.error = "Please enter your first name"
-            }
-            if (binding.lastName.text.isNullOrEmpty()) {
-                binding.lastName.error = "Please enter your last name"
-            }
-            if (binding.nickName.text.isNullOrEmpty()) {
-                binding.nickName.error = "Please enter your nickname"
-            }
-            if (binding.Relationship.selectedItemPosition == 0) {
-                Snackbar.make(binding.root, "Please select your relationship to the couple", Snackbar.LENGTH_SHORT).show()
-                return
-            }
-            if (binding.emailAdd.text.isNullOrEmpty()) {
-                binding.emailAdd.error = "Please enter your email"
-            }
-            if (binding.contactNo.text.isNullOrEmpty()) {
-                binding.contactNo.error = "Please enter your contact number"
-            }
-            if (binding.address.text.isNullOrEmpty()) {
-                binding.address.error = "Please enter your address"
-            }
-
-            Snackbar.make(binding.root, "Please check empty fields", Snackbar.LENGTH_SHORT).show()
-            return
-        }
-
         // Save data to slamBook object
         slamBook.firstName = binding.firstName.text.toString()
         slamBook.lastName = binding.lastName.text.toString()
@@ -161,16 +139,24 @@ class FormPageOneFragment : Fragment() {
         slamBook.howIKnowTheCouple = binding.Relationship.selectedItem.toString()
         slamBook.email = binding.emailAdd.text.toString()
 
+        // ⭐ THE FIX: SAVE BIRTHDATE DATA FROM SPINNERS ⭐
+        slamBook.birthMonth = binding.dateMonth.selectedItem.toString()
+        slamBook.birthDay = binding.dateDay.selectedItem.toString()
+        slamBook.birthYear = binding.dateYear.selectedItem.toString()
+
+        // Save Guest Type
+        slamBook.guestType = binding.guestType.selectedItem.toString()
+
         val phoneNumber = binding.contactNo.text.toString().trim()
-        slamBook.contactNo = "$selectedCountryCode $phoneNumber"
+        // Save contact number with country code prefix
+        slamBook.contactNo = phoneNumber.replace(selectedCountryCode, "").trim()
 
         slamBook.address = binding.address.text.toString()
 
-        Log.d(
-            "WEDDING_FORM_1",
-            "Guest: ${slamBook.firstName} ${slamBook.lastName} - Relationship: ${slamBook.howIKnowTheCouple}"
-        )
+        // Log the data to ensure it was saved correctly
+        slamBook.printLog()
 
+        // Navigate to Page 2
         val bundle = Bundle()
         bundle.putParcelable("slamBooK", slamBook)
 
@@ -182,5 +168,4 @@ class FormPageOneFragment : Fragment() {
         startActivity(intent)
         requireActivity().finish()
     }
-
 }

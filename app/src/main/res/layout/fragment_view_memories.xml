@@ -13,81 +13,28 @@
         android:orientation="vertical"
         android:padding="8dp">
 
-        <LinearLayout
+        <Button
+            android:id="@+id/btnBackToMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back to menu"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/pink_500"
+            android:layout_marginBottom="12dp"
+            android:paddingHorizontal="16dp"/>
+
+
+
+
+        <!-- ⭐ EXPANDABLE HEADER CARD ⭐ -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:paddingBottom="24dp"
-            android:paddingTop="8dp">
-
-            <TextView
-                android:id="@+id/guestName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="32sp"
-                android:textColor="@color/pink_500"
-                android:layout_marginBottom="4dp"
-                tools:text="Samantha &quot;Sam&quot; Green"/>
-
-            <TextView
-                android:id="@+id/guestNickname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="@color/text_dark"
-                tools:text="Sam's Entry"/>
-        </LinearLayout>
-
-        <androidx.cardview.widget.CardView
-            style="@style/MemoryCardStyle"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            android:layout_marginBottom="16dp"
             app:cardBackgroundColor="@color/white">
-            <LinearLayout style="@style/MemoryCardContentLayout">
-                <TextView style="@style/MemoryHeaderStyle" android:text="What I Admire About Their Love" />
-                <TextView android:id="@+id/guestLoveMeans" style="@style/MemoryContentStyle" tools:text="They inspire everyone around them with their patience and grace." />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            style="@style/MemoryCardStyle"
-            app:cardBackgroundColor="@color/white">
-            <LinearLayout style="@style/MemoryCardContentLayout">
-                <TextView style="@style/MemoryHeaderStyle" android:text="My Wishes for Their Marriage" />
-                <TextView android:id="@+id/guestWishes" style="@style/MemoryContentStyle" tools:text="I wish them a lifetime of laughter, growth, and endless coffee dates." />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            style="@style/MemoryCardStyle"
-            app:cardBackgroundColor="@color/white">
-            <LinearLayout style="@style/MemoryCardContentLayout">
-                <TextView style="@style/MemoryHeaderStyle" android:text="Favorite Memory with the Couple" />
-                <TextView android:id="@+id/guestFavoriteMemory" style="@style/MemoryContentStyle" tools:text="That time we all got stuck in the rain and sang badly on the way home." />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            style="@style/MemoryCardStyle"
-            app:cardBackgroundColor="@color/white">
-            <LinearLayout style="@style/MemoryCardContentLayout">
-                <TextView style="@style/MemoryHeaderStyle" android:text="Favorite Thing About the Couple" />
-                <TextView android:id="@+id/guestFavoriteThing" style="@style/MemoryContentStyle" tools:text="Their ability to finish each other's sentences is hilariously accurate." />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            style="@style/MemoryCardStyle"
-            app:cardBackgroundColor="@color/white">
-            <LinearLayout style="@style/MemoryCardContentLayout">
-                <TextView style="@style/MemoryHeaderStyle" android:text="My Advice for the Newlyweds" />
-                <TextView android:id="@+id/guestMarriageAdvice" style="@style/MemoryContentStyle" tools:text="Always communicate, and remember who takes out the trash!" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            style="@style/MemoryCardStyle"
-            app:cardBackgroundColor="@color/pink_50">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -95,38 +42,151 @@
                 android:padding="16dp"
                 android:gravity="center_vertical">
 
-                <TextView
+                <!-- Profile Text -->
+                <LinearLayout
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="The Couple Rating"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textColor="@color/pink_500"/>
+                    android:orientation="vertical"
+                    android:paddingEnd="16dp">
 
-                <TextView
-                    android:id="@+id/guestRating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/pink_500"
-                    tools:text="5/5 Stars"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Guest Profile"
+                        android:textSize="12sp"
+                        android:textColor="@color/pink_200" />
 
+                    <TextView
+                        android:id="@+id/guestName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="24sp"
+                        android:textColor="@color/pink_500"
+                        tools:text="Samantha &quot;Sam&quot; Green"/>
+
+                    <TextView
+                        android:id="@+id/guestNickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="@color/text_dark"
+                        tools:text="Sam's Entry"/>
+                </LinearLayout>
+
+                <!-- Expand/Collapse Button (The Arrow) -->
+                <ImageButton
+                    android:id="@+id/btnToggleDetails"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Expand Details"
+                    android:src="@drawable/ic_arrow_down"
+                    app:tint="@color/pink_500" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/btnViewContactDetails"
+        <!-- ⭐ HIDDEN CONTENT CONTAINER ⭐ -->
+        <!-- All details are placed inside this LinearLayout to be toggled -->
+        <LinearLayout
+            android:id="@+id/contentContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="16dp"
-            android:text="VIEW CONTACT DETAILS"
-            android:padding="16dp"
-            android:backgroundTint="@color/pink_500"
-            android:textColor="@color/white"
-            android:textStyle="bold"/>
+            android:orientation="vertical"
+            android:visibility="gone"> <!-- ⭐ START HIDDEN ⭐ -->
+
+            <androidx.cardview.widget.CardView
+                style="@style/MemoryCardStyle"
+                app:cardBackgroundColor="@color/white">
+                <LinearLayout style="@style/MemoryCardContentLayout">
+                    <TextView style="@style/MemoryHeaderStyle" android:text="What Love Means To Me" />
+                    <TextView android:id="@+id/guestLoveMeans" style="@style/MemoryContentStyle" tools:text="They inspire everyone around them with their patience and grace." />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                style="@style/MemoryCardStyle"
+                app:cardBackgroundColor="@color/white">
+                <LinearLayout style="@style/MemoryCardContentLayout">
+                    <TextView style="@style/MemoryHeaderStyle" android:text="My Wishes for Their Marriage" />
+                    <TextView android:id="@+id/guestWishes" style="@style/MemoryContentStyle" tools:text="I wish them a lifetime of laughter, growth, and endless coffee dates." />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                style="@style/MemoryCardStyle"
+                app:cardBackgroundColor="@color/white">
+                <LinearLayout style="@style/MemoryCardContentLayout">
+                    <TextView style="@style/MemoryHeaderStyle" android:text="Favorite Memory with the Couple" />
+                    <TextView android:id="@+id/guestFavoriteMemory" style="@style/MemoryContentStyle" tools:text="That time we all got stuck in the rain and sang badly on the way home." />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                style="@style/MemoryCardStyle"
+                app:cardBackgroundColor="@color/white">
+                <LinearLayout style="@style/MemoryCardContentLayout">
+                    <TextView style="@style/MemoryHeaderStyle" android:text="Favorite Thing About the Couple" />
+                    <TextView android:id="@+id/guestFavoriteThing" style="@style/MemoryContentStyle" tools:text="Their ability to finish each other's sentences is hilariously accurate." />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                style="@style/MemoryCardStyle"
+                app:cardBackgroundColor="@color/white">
+                <LinearLayout style="@style/MemoryCardContentLayout">
+                    <TextView style="@style/MemoryHeaderStyle" android:text="My Advice for the Newlyweds" />
+                    <TextView android:id="@+id/guestMarriageAdvice" style="@style/MemoryContentStyle" tools:text="Always communicate, and remember who takes out the trash!" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Rating Card -->
+            <androidx.cardview.widget.CardView
+                style="@style/MemoryCardStyle"
+                app:cardBackgroundColor="@color/pink_100">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="The Couple Rating"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="@color/pink_200"/>
+
+                    <TextView
+                        android:id="@+id/guestRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/pink_200"
+                        tools:text="5/5 Stars"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Add Contact Details Button here (if still needed) -->
+            <Button
+                android:id="@+id/btnViewContactDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:text="View Contact Details"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/pink_500" />
+
+
+        </LinearLayout>
+        <!-- End of Hidden Content Container -->
 
     </LinearLayout>
 </ScrollView>

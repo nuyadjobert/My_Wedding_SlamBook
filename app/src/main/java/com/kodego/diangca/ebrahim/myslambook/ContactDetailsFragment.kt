@@ -19,34 +19,31 @@ class ContactDetailsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // ⭐ UPDATED ONCREATE METHOD ⭐
-
-        // Check arguments and retrieve the SlamBook object safely
         val loadedSlamBook = arguments?.let {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
-                it.getParcelable("slamBooK", SlamBook::class.java)
+                // Key used for passing data: "slamBook"
+                it.getParcelable("slamBook", SlamBook::class.java)
             } else {
                 @Suppress("DEPRECATION")
-                it.getParcelable<SlamBook>("slamBooK")
+                it.getParcelable<SlamBook>("slamBook")
             }
         }
 
-        // Initialize slamBook, and if it's null, handle the failure (pop back)
         if (loadedSlamBook != null) {
+            // Data successfully loaded
             slamBook = loadedSlamBook
         } else {
-            Log.e("CONTACT_DETAILS", "SlamBook argument is NULL. Crashing fragment.")
-            // This is the clean way to handle the crash: pop the failed fragment off the stack
+            Log.e("CONTACT_DETAILS", "SlamBook argument is NULL. Cannot display details.")
+            // Navigate back if data is missing, preventing a crash.
             findNavController().popBackStack()
         }
     }
 
-    // 2. Inflate the new contact details layout
+    // 2. Inflate the contact details layout
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // NOTE: The binding class name will be generated based on the XML file name
         binding = FragmentContactDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -54,6 +51,10 @@ class ContactDetailsFragment : Fragment() {
     // 3. Bind the data to the TextViews
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.btnBackToViewMemories.setOnClickListener {
+            findNavController().navigateUp()
+        }
         // Only call displayContactDetails if slamBook was successfully initialized
         if (::slamBook.isInitialized) {
             displayContactDetails()
@@ -61,11 +62,36 @@ class ContactDetailsFragment : Fragment() {
     }
 
     private fun displayContactDetails() {
-        // This function now correctly binds the fields that exist in its own layout
         with(binding) {
+            // --- IDENTITY FIELDS ---
+            // 1. Nickname
+            guestNickname.text = slamBook.nickName
+
+            // 2. Full Name (using the helper function from SlamBook)
+            guestFullName.text = slamBook.getFullName()
+
+            // 3. Guest Type
+            guestTypeDisplay.text = slamBook.guestType
+
+            // 4. Relationship
             guestRelationship.text = slamBook.howIKnowTheCouple
+
+            // 5. Birthdate (NEW: Combined from SlamBook fields)
+            val birthDate = "${slamBook.birthMonth} ${slamBook.birthDay}, ${slamBook.birthYear}".trim()
+            if (birthDate.isNotBlank()) {
+                guestBirthdate.text = birthDate
+            } else {
+                guestBirthdate.text = "N/A"
+            }
+
+            // --- CONTACT FIELDS ---
+            // 6. Email
             guestEmail.text = slamBook.email
+
+            // 7. Contact Number
             guestContact.text = slamBook.contactNo
+
+            // 8. Address
             guestAddress.text = slamBook.address
         }
     }
