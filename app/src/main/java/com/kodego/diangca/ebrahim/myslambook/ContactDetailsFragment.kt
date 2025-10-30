@@ -21,7 +21,7 @@ class ContactDetailsFragment : Fragment() {
 
         val loadedSlamBook = arguments?.let {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
-                // Key used for passing data: "slamBook"
+
                 it.getParcelable("slamBook", SlamBook::class.java)
             } else {
                 @Suppress("DEPRECATION")
@@ -30,16 +30,16 @@ class ContactDetailsFragment : Fragment() {
         }
 
         if (loadedSlamBook != null) {
-            // Data successfully loaded
+
             slamBook = loadedSlamBook
         } else {
             Log.e("CONTACT_DETAILS", "SlamBook argument is NULL. Cannot display details.")
-            // Navigate back if data is missing, preventing a crash.
+
             findNavController().popBackStack()
         }
     }
 
-    // 2. Inflate the contact details layout
+    // . Inflate the contact details layout
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,14 +48,14 @@ class ContactDetailsFragment : Fragment() {
         return binding.root
     }
 
-    // 3. Bind the data to the TextViews
+    // . Bind the data to the TextViews
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnBackToViewMemories.setOnClickListener {
             findNavController().navigateUp()
         }
-        // Only call displayContactDetails if slamBook was successfully initialized
+
         if (::slamBook.isInitialized) {
             displayContactDetails()
         }

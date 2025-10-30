@@ -34,15 +34,15 @@ class MenuActivity : AppCompatActivity() {
     }
 
 
-    // ✅ 1. When "Create Memories" is clicked → Open FormActivity → Start at Page 1
+    //  When "Create Memories" is clicked → Open FormActivity → Start at Page 1
     private fun openCreateMemories() {
         val intent = Intent(this, FormActivity::class.java)
         intent.putExtra("NAVIGATE_TO", "CREATE_MEMORIES")
-        intent.putExtra("slamBooK", SlamBook()) // empty new one
+        intent.putExtra("slamBooK", SlamBook())
         startActivity(intent)
     }
 
-    // ✅ 2. When "View Memories" is clicked → Open FormActivity → Directly show ViewMemoriesFragment
+    //  When "View Memories" is clicked → Open FormActivity → Directly show ViewMemoriesFragment
     private fun openViewMemories() {
         if (slamBooks.isEmpty()) {
             Snackbar.make(

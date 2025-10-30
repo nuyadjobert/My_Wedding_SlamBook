@@ -14,7 +14,7 @@ class ViewMemoriesFragment : Fragment() {
 
     private lateinit var binding: FragmentViewMemoriesBinding
     private lateinit var slamBook: SlamBook
-    private var isExpanded: Boolean = false // State to track if content is visible
+    private var isExpanded: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,11 +49,11 @@ class ViewMemoriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // 1. Display only the header details immediately
+
         displayHeaderDetails()
 
         binding.btnBackToMenu.setOnClickListener {
-            requireActivity().finish() // closes FormActivity and returns to MenuActivity
+            requireActivity().finish()
         }
 
         // 2. Set up the toggle button listener
@@ -74,7 +74,7 @@ class ViewMemoriesFragment : Fragment() {
     }
 
     private fun displayHeaderDetails() {
-        // Only set the name and nickname here
+
         with(binding) {
             guestName.text = "${slamBook.firstName} ${slamBook.lastName}"
             guestNickname.text = slamBook.nickName
@@ -105,9 +105,9 @@ class ViewMemoriesFragment : Fragment() {
             // Rotate the arrow up (assuming 180 degrees is the 'up' state)
             binding.btnToggleDetails.rotation = 180f
         } else {
-            // Hide content
+
             binding.contentContainer.visibility = View.GONE
-            // Rotate the arrow down (0 degrees is the 'down' state)
+
             binding.btnToggleDetails.rotation = 0f
         }
     }

@@ -5,11 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
@@ -51,7 +51,7 @@ class FormPageOneFragment : Fragment() {
 
     private fun initComponents() {
         if (arguments != null) {
-            slamBook = ((arguments?.getParcelable("slamBooK") as SlamBook?)!!)
+            slamBook = (arguments?.getParcelable("slamBooK") as SlamBook?)!!
             slamBook.printLog()
             restoreField()
         } else {
@@ -64,10 +64,11 @@ class FormPageOneFragment : Fragment() {
                 btnBackOnClickListener()
             }
             btnNext.setOnClickListener {
-                btnNextOnClickListener()
+                if (validateInputs()) {
+                    btnNextOnClickListener()
+                }
             }
 
-            // Update prompts for wedding context
             Relationship.prompt = "How do you know the couple?"
         }
     }
@@ -106,16 +107,12 @@ class FormPageOneFragment : Fragment() {
             contactNo.setText(slamBook.contactNo)
             address.setText(slamBook.address)
 
-            // Restore relationship to couple
             if (slamBook.howIKnowTheCouple.isNotBlank()) {
                 val relationships = resources.getStringArray(R.array.relationToCouple)
                 val position = relationships.indexOf(slamBook.howIKnowTheCouple)
-                if (position >= 0) {
-                    Relationship.setSelection(position)
-                }
+                if (position >= 0) Relationship.setSelection(position)
             }
 
-            // ⭐ NEW: RESTORE BIRTHDATE FIELDS (for when navigating back to this page) ⭐
             if (slamBook.birthMonth.isNotBlank()) {
                 val months = resources.getStringArray(R.array.monthName)
                 dateMonth.setSelection(months.indexOf(slamBook.birthMonth))
@@ -131,32 +128,83 @@ class FormPageOneFragment : Fragment() {
         }
     }
 
+    /**VALIDATION FUNCTION **/
+    private fun validateInputs(): Boolean {
+        val fName = binding.firstName.text.toString().trim()
+        val lName = binding.lastName.text.toString().trim()
+        val nName = binding.nickName.text.toString().trim()
+        val email = binding.emailAdd.text.toString().trim()
+        val contact = binding.contactNo.text.toString().trim()
+        val address = binding.address.text.toString().trim()
+
+        when {
+            fName.isEmpty() -> {
+                binding.firstName.error = "First name is required"
+                binding.firstName.requestFocus()
+                return false
+            }
+            lName.isEmpty() -> {
+                binding.lastName.error = "Last name is required"
+                binding.lastName.requestFocus()
+                return false
+            }
+            nName.isEmpty() -> {
+                binding.nickName.error = "Nickname is required"
+                binding.nickName.requestFocus()
+                return false
+            }
+            !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+                binding.emailAdd.error = "Enter a valid email"
+                binding.emailAdd.requestFocus()
+                return false
+            }
+            contact.isEmpty() || !contact.matches(Regex(".*\\d{7,}.*")) -> {
+                binding.contactNo.error = "Enter a valid contact number"
+                binding.contactNo.requestFocus()
+                return false
+            }
+            address.isEmpty() -> {
+                binding.address.error = "Address cannot be empty"
+                binding.address.requestFocus()
+                return false
+            }
+            binding.Relationship.selectedItemPosition == 0 -> {
+                Snackbar.make(binding.root, "Please select how you know the couple", Snackbar.LENGTH_SHORT).show()
+                return false
+            }
+            binding.dateMonth.selectedItemPosition == 0 ||
+                    binding.dateDay.selectedItemPosition == 0 ||
+                    binding.dateYear.selectedItemPosition == 0 -> {
+                Snackbar.make(binding.root, "Please select your complete birthdate", Snackbar.LENGTH_SHORT).show()
+                return false
+            }
+            binding.guestType.selectedItemPosition == 0 -> {
+                Snackbar.make(binding.root, "Please select your guest type", Snackbar.LENGTH_SHORT).show()
+                return false
+            }
+            else -> return true
+        }
+    }
+
     private fun btnNextOnClickListener() {
-        // Save data to slamBook object
         slamBook.firstName = binding.firstName.text.toString()
         slamBook.lastName = binding.lastName.text.toString()
         slamBook.nickName = binding.nickName.text.toString()
         slamBook.howIKnowTheCouple = binding.Relationship.selectedItem.toString()
         slamBook.email = binding.emailAdd.text.toString()
 
-        // ⭐ THE FIX: SAVE BIRTHDATE DATA FROM SPINNERS ⭐
         slamBook.birthMonth = binding.dateMonth.selectedItem.toString()
         slamBook.birthDay = binding.dateDay.selectedItem.toString()
         slamBook.birthYear = binding.dateYear.selectedItem.toString()
 
-        // Save Guest Type
         slamBook.guestType = binding.guestType.selectedItem.toString()
 
         val phoneNumber = binding.contactNo.text.toString().trim()
-        // Save contact number with country code prefix
         slamBook.contactNo = phoneNumber.replace(selectedCountryCode, "").trim()
 
         slamBook.address = binding.address.text.toString()
-
-        // Log the data to ensure it was saved correctly
         slamBook.printLog()
 
-        // Navigate to Page 2
         val bundle = Bundle()
         bundle.putParcelable("slamBooK", slamBook)
 
